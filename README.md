@@ -39,7 +39,7 @@ Detailed results are available in the [`results`](./results/) folder.
 To gather your own results, [install Nargo](https://noir-lang.org/getting_started/nargo_installation) and run from the project root:
 
 ```
-bash scripts/info_and_prove_csv.sh
+bash scripts/benchmark_prove.sh
 ```
 
 You can then find the results being printed into the CSV file under the [`results`](./results/) folder.

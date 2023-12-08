@@ -2,14 +2,13 @@
 # Does not successfully extract backend circuit sizes.
 
 # Specify the base commands
-info_base_command="nargo info --package 2^"
-prove_base_command="nargo prove --package 2^"
+base_command="nargo prove --package 2^"
 
 # Generate a sequence of arguments from 2 to 24
 arguments=($(seq 2 24))
 
 # Specify the output CSV file
-output_csv="results/info_and_prove_results.csv"
+output_csv="results/prove.csv"
 
 # Clear the contents of the output CSV file and write headers
 echo "Backend Circuit Size (2^n),\`nargo prove\` Time (s)" > "$output_csv"
@@ -22,17 +21,13 @@ print_separator() {
 # Iterate through each set of arguments
 for args in "${arguments[@]}"; do
     # Construct the full commands
-    info_full_command="$info_base_command$args"
-    prove_full_command="$prove_base_command$args"
-
-    # Run the info command and capture its output
-    info_output=$(eval "$info_full_command")
+    full_command="$base_command$args"
 
     # Print the prove command before timing
-    echo "Running: $prove_full_command"
+    echo "Running: $full_command"
 
     # Run the prove command and capture the timing information
-    { time_output=$({ time $prove_full_command; } 2>&1); }
+    { time_output=$({ time $full_command; } 2>&1); }
 
     # Extract real time from time_output using awk
     real_time=$(echo "$time_output" | awk '/real/ {print $NF}')
