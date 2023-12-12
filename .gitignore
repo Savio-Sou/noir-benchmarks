@@ -3,3 +3,7 @@
 # Noir
 proofs/
 target/
+
+# Barretenberg
+acir_artifacts/
+crs/
