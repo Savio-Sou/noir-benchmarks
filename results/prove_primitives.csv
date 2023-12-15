@@ -1,0 +1,9 @@
+Primitive,`nargo prove` Time (s)
+keccak256,0m2.823s
+keccak256_100_times,1m24.236s
+ecdsa_secp256k1,0m3.081s
+compute_merkle_root_depth_4,0m1.656s
+compute_merkle_root_depth_32,0m1.695s
+verify_proof,0m11.811s
+storage_proof_depth_8,0m0.881s
+rsa,4m47.202s

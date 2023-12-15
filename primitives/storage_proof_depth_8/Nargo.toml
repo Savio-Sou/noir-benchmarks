@@ -1,0 +1,8 @@
+[package]
+name = "storage_proof_depth_8"
+type = "bin"
+authors = [""]
+compiler_version = ">=0.21.0"
+
+[dependencies]
+trie = { tag = "main", git = "https://github.com/aragonzkresearch/noir-trie-proofs", directory = "lib" }
