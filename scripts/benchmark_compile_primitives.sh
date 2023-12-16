@@ -32,7 +32,7 @@ for args in "${arguments[@]}"; do
     real_time=$(echo "$time_output" | awk '/real/ {print $NF}')
 
     # Log the results to the CSV file
-    echo "2^$args,$real_time" >> "$output_csv"
+    echo "$args,$real_time" >> "$output_csv"
 
     # Print a separator line after each command
     print_separator
