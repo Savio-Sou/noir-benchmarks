@@ -1,5 +1,5 @@
 [package]
-name = "2^23"
+name = "2^24"
 type = "bin"
 authors = [""]
 compiler_version = ">=0.19.4"
