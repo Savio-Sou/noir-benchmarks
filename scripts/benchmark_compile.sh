@@ -7,7 +7,7 @@ arguments=($(seq 2 24))
 output_csv="results/compile.csv"
 
 # Clear the contents of the output CSV file and write headers
-echo "Backend Circuit Size,\`nargo execute\` Time (s)" > "$output_csv"
+echo "Backend Circuit Size,\`nargo compile\` Time (s)" > "$output_csv"
 
 # Function to print a separator line
 print_separator() {
@@ -19,10 +19,10 @@ for args in "${arguments[@]}"; do
     # Construct the full commands
     command="nargo compile --package 2^$args"
 
-    # Print the execute command before timing
+    # Print the command before timing
     echo "Running: $command"
 
-    # Run the execute command and capture the timing information
+    # Run the command and capture the timing information
     { time_output=$({ time $command; } 2>&1); }
 
     # Extract real time from time_output using awk
