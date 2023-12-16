@@ -5,5 +5,5 @@ ecdsa_secp256k1,0m2.430s
 compute_merkle_root_depth_4,0m1.120s
 compute_merkle_root_depth_32,0m1.164s
 verify_proof,0m10.756s
-storage_proof_depth_8,0m0.440s
+storage_proof_depth_8,1m18.635s
 rsa,2m57.779s

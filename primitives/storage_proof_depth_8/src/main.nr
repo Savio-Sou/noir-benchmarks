@@ -9,13 +9,10 @@ global DEPTH8_MAX: Field = 4256;
 +-----------------------+------------------------+--------------+----------------------+
 | Package               | Language               | ACIR Opcodes | Backend Circuit Size |
 +-----------------------+------------------------+--------------+----------------------+
-| storage_proof_depth_8 | PLONKCSat { width: 3 } | 55880        | 1802223              |
+| depth_8_storage_proof | PLONKCSat { width: 3 } | 51563        | 1687738              |
 +-----------------------+------------------------+--------------+----------------------+
 */
 
-fn main(
-    state_root: pub [u8; 32],
-    state_proof: trie::TrieProof<20, DEPTH8_MAX, trie::MAX_ACCOUNT_STATE_LENGTH>
-) {
-    assert(state_proof.verify_state_root(state_root));
+fn main(storage_root: pub [u8; 32], storage_proof: trie::StorageProof<DEPTH8_MAX>) {
+    assert(storage_proof.verify_storage_root(storage_root));
 }
