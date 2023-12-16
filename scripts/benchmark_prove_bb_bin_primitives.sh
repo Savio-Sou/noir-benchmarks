@@ -18,15 +18,11 @@ print_separator() {
 for args in "${arguments[@]}"; do
     # Construct commands
     encode_command="jq -r '.bytecode' ./target/$args.json | base64 -d > ./target/$args.gz"
-    rename_command="cp ./target/witness_$args.tr ./target/witness_$args.gz"
     prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/$args.gz -w ./target/witness_$args.gz -o ./proofs/${args}_bb_bin.proof"
 
     # Preprocess files
     echo "Running: $encode_command"
     eval "$encode_command"
-
-    echo "Running: $rename_command"
-    eval "$rename_command"
 
     # Print the execute command before timing
     echo "Running: $prove_command"

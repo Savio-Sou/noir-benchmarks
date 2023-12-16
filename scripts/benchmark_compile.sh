@@ -7,7 +7,7 @@ arguments=($(seq 2 24))
 output_csv="results/compile.csv"
 
 # Clear the contents of the output CSV file and write headers
-echo "Backend Circuit Size (2^n),\`nargo execute\` Time (s)" > "$output_csv"
+echo "Backend Circuit Size,\`nargo execute\` Time (s)" > "$output_csv"
 
 # Function to print a separator line
 print_separator() {

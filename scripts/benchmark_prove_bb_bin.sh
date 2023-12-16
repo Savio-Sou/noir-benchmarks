@@ -7,7 +7,7 @@ arguments=($(seq 2 24))
 output_csv="results/prove_bb_bin.csv"
 
 # Clear the contents of the output CSV file and write headers
-echo "Backend Circuit Size (2^n),\`backend_binary prove\` Time (s)" > "$output_csv"
+echo "Backend Circuit Size,\`backend_binary prove\` Time (s)" > "$output_csv"
 
 # Function to print a separator line
 print_separator() {
@@ -18,15 +18,11 @@ print_separator() {
 for args in "${arguments[@]}"; do
     # Construct commands
     encode_command="jq -r '.bytecode' ./target/2^$args.json | base64 -d > ./target/2^$args.gz"
-    rename_command="cp ./target/witness_2^$args.tr ./target/witness_2^$args.gz"
     prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/2^$args.gz -w ./target/witness_2^$args.gz -o ./proofs/2^${args}_bb_bin.proof"
 
     # Preprocess files
     echo "Running: $encode_command"
     eval "$encode_command"
-
-    echo "Running: $rename_command"
-    eval "$rename_command"
 
     # Print the execute command before timing
     echo "Running: $prove_command"
