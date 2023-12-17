@@ -48,6 +48,10 @@ Existing results were gathered using:
 
 Detailed results are available in the [`results`](./results/) folder.
 
+A Noir user flow typically starts from developers compiling and distributing the compiled artifacts as a part of their applications to users, where users then execute the application and prove their execution. Execute and Prove times combined hence represents what application users are expected to experience when interacting with applications built with Noir.
+
+The "Execute + Prove Time"s above were gathered through running `nargo prove`, which not only does execution and proving but also additional minor tasks that might contribute to the differences between simply summing "Execute" and "Prove" times up.
+
 ## Run it yourself
 
 To gather your own results, [install Nargo](https://noir-lang.org/getting_started/nargo_installation) and run from the project root:
