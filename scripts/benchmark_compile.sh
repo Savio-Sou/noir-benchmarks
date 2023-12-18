@@ -4,7 +4,7 @@
 arguments=($(seq 2 24))
 
 # Specify the output CSV file
-output_csv="results/compile.csv"
+output_csv="results/m3-pro-12-arm/compile.csv"
 
 # Clear the contents of the output CSV file and write headers
 echo "Backend Circuit Size,\`nargo compile\` Time (s)" > "$output_csv"
