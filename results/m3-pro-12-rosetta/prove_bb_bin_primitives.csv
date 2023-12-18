@@ -1,0 +1,9 @@
+Primitive,`backend_binary prove` Time (s)
+keccak256,0m1.705s
+keccak256_100_times,0m57.684s
+ecdsa_secp256k1,0m1.822s
+compute_merkle_root_depth_4,0m0.869s
+compute_merkle_root_depth_32,0m0.908s
+verify_proof,0m8.118s
+storage_proof_depth_8,0m50.767s
+rsa,2m28.625s
