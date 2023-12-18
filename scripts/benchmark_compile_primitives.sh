@@ -7,7 +7,7 @@ base_command="nargo compile --package "
 arguments=("keccak256" "keccak256_100_times" "ecdsa_secp256k1" "compute_merkle_root_depth_4" "compute_merkle_root_depth_32" "verify_proof" "storage_proof_depth_8" "rsa")
 
 # Specify the output CSV file
-output_csv="results/m3-pro-12-arm/compile_primitives.csv"
+output_csv="results/compile_primitives.csv"
 
 # Clear the contents of the output CSV file and write headers
 echo "Primitive,\`nargo compile\` Time (s)" > "$output_csv"
