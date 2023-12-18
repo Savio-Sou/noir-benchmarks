@@ -19,5 +19,3 @@ Backend Circuit Size,`nargo prove` Time (s)
 2^19,0m32.414s
 2^20,1m5.016s
 2^21,2m21.177s
-2^22,1m41.479s
-2^23,3m2.550s
