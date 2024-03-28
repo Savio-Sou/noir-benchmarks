@@ -1,0 +1,10 @@
+Backend Circuit Size,`nargo execute` Time (s)
+2^2,0m0.275s
+2^3,0m0.281s
+2^4,0m0.277s
+2^5,0m0.289s
+2^6,0m0.291s
+2^7,0m0.285s
+2^8,0m0.286s
+2^9,0m0.298s
+2^10,0m0.300s
