@@ -4,11 +4,11 @@ use dep::std;
 +-------------------------+----------------------+--------------+----------------------+
 | Package                 | Expression Width     | ACIR Opcodes | Backend Circuit Size |
 +-------------------------+----------------------+--------------+----------------------+
-| keccak256_535B_10_times | Bounded { width: 3 } | 8849         | 762193               |
+| keccak256_532B_10_times | Bounded { width: 3 } | 8849         | 761974               |
 +-------------------------+----------------------+--------------+----------------------+
 */
 
-global TRIE_NODE_LEN: u32 = 535;
+global TRIE_NODE_LEN: u32 = 532;
 global TIMES = 10;
 
 fn main(trie_nodes: [[u8; TRIE_NODE_LEN]; TIMES]) -> pub [u8; 32] {

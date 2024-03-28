@@ -4,18 +4,21 @@ Benchmark `nargo prove` times of Noir programs spanning across different constra
 ## Results
 
 Existing results were gathered using:
-- M2 Macbook Air
+- M1 Max Macbook Pro
 - Nargo v0.26.0 paired with the default [barretenberg](https://github.com/AztecProtocol/aztec-packages/tree/master/barretenberg) proving backend
 
 | Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) | Execute + Prove Time (s) |
 |------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|:------------------------:|
-| keccak256                    |               55,000 |            0.308 |            0.381 |          2.238 |                    2.823 |
-| keccak256_100_times          |            1,800,000 |              0.3 |            0.384 |         78.813 |                   84.236 |
-| ecdsa_secp256k1              |               35,000 |            0.299 |            0.371 |           2.43 |                    3.081 |
-| compute_merkle_root_depth_4  |               29,000 |            0.296 |            0.376 |           1.12 |                    1.656 |
-| compute_merkle_root_depth_32 |               30,000 |              0.3 |            0.389 |          1.164 |                    1.695 |
-| verify_proof                 |              250,000 |            0.298 |            0.381 |         10.756 |                   11.811 |
-| storage_proof_depth_8        |            1,700,000 |            1.873 |            1.133 |         78.635 |                    84.61 |
+| keccak256_32B                |               54,830 |            0.248 |            0.283 |          1.586 |                    1.869 |
+| keccak256_32B_100_times      |            1,829,949 |            0.227 |            0.286 |         36.157 |                   36.443 |
+| keccak256_532B               |               97,766 |            0.228 |            0.282 |          2.771 |                    3.053 |
+| keccak256_532B_10_times      |              761,974 |            0.256 |            0.354 |         17.475 |                   17.829 |
+| ecdsa_secp256k1              |               36,355 |            0.219 |            0.281 |          1.623 |                    1.904 |
+| compute_merkle_root_depth_4  |               28,858 |            0.217 |            0.280 |          1.044 |                    1.324 |
+| compute_merkle_root_depth_32 |               30,482 |            0.229 |            0.299 |          1.081 |                    1.380 |
+| verify_proof                 |              257,427 |            0.219 |            0.291 |          5.262 |                    5.553 |
+| storage_proof_depth_8        |            1,686,784 |            0.578 |            1.501 |         34.708 |                   36.209 |
+
 
 ![Results on M2 Macbook Air](M2_Air_Nargo_v0.21.0.png)
 
