@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Generate a sequence of arguments for all primitives
-arguments=("keccak256_32B" "keccak256_32B_100_times" "ecdsa_secp256k1" "compute_merkle_root_depth_4" "compute_merkle_root_depth_32" "verify_proof" "storage_proof_depth_8")
+# Generate a sequence of packages for all primitives
+packages=("keccak256_32B" "keccak256_32B_100_times" "ecdsa_secp256k1" "compute_merkle_root_depth_4" "compute_merkle_root_depth_32" "verify_proof" "storage_proof_depth_8")
 
 # Specify the output CSV file
 output_csv="results/prove_bb_bin_primitives.csv"
@@ -14,11 +14,11 @@ print_separator() {
     echo "----------------------------------------------------"
 }
 
-# Iterate through each set of arguments
-for args in "${arguments[@]}"; do
+# Iterate through each set of packages
+for pkg in "${packages[@]}"; do
     # Construct commands
-    encode_command="jq -r '.bytecode' ./target/$args.json | base64 -d > ./target/$args.gz"
-    prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/$args.gz -w ./target/witness_$args.gz -o ./proofs/${args}_bb_bin.proof"
+    encode_command="jq -r '.bytecode' ./target/$pkg.json | base64 -d > ./target/$pkg.gz"
+    prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/$pkg.gz -w ./target/witness_$pkg.gz -o ./proofs/${pkg}_bb_bin.proof"
 
     # Preprocess files
     echo "Running: $encode_command"
@@ -34,7 +34,7 @@ for args in "${arguments[@]}"; do
     real_time=$(echo "$time_output" | awk '/real/ {print $NF}')
 
     # Log the results to the CSV file
-    echo "$args,$real_time" >> "$output_csv"
+    echo "$pkg,$real_time" >> "$output_csv"
 
     # Print a separator line after each command
     print_separator
