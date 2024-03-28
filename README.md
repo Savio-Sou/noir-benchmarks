@@ -16,7 +16,6 @@ Existing results were gathered using:
 | compute_merkle_root_depth_32 |               30,000 |              0.3 |            0.389 |          1.164 |                    1.695 |
 | verify_proof                 |              250,000 |            0.298 |            0.381 |         10.756 |                   11.811 |
 | storage_proof_depth_8        |            1,700,000 |            1.873 |            1.133 |         78.635 |                    84.61 |
-| rsa                          |            3,000,000 |           29.061 |           109.31 |        177.779 |                  287.202 |
 
 ![Results on M2 Macbook Air](M2_Air_Nargo_v0.21.0.png)
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Generate a sequence of arguments for all primitives
-arguments=("keccak256" "keccak256_100_times" "ecdsa_secp256k1" "compute_merkle_root_depth_4" "compute_merkle_root_depth_32" "verify_proof" "storage_proof_depth_8" "rsa")
+arguments=("keccak256" "keccak256_100_times" "ecdsa_secp256k1" "compute_merkle_root_depth_4" "compute_merkle_root_depth_32" "verify_proof" "storage_proof_depth_8")
 
 # Specify the output CSV file
 output_csv="results/prove_bb_bin_primitives.csv"
