@@ -5,7 +5,7 @@ Benchmark `nargo prove` times of Noir programs spanning across different constra
 
 Existing results were gathered using:
 - M2 Macbook Air
-- Nargo v0.21.0 paired with the default [barretenberg](https://github.com/AztecProtocol/aztec-packages/tree/master/barretenberg) proving backend
+- Nargo v0.26.0 paired with the default [barretenberg](https://github.com/AztecProtocol/aztec-packages/tree/master/barretenberg) proving backend
 
 | Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) | Execute + Prove Time (s) |
 |------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|:------------------------:|
