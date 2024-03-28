@@ -1,5 +1,5 @@
 [package]
-name = "keccak256_100_times"
+name = "keccak256_32B"
 type = "bin"
 authors = [""]
 compiler_version = ">=0.21.0"
