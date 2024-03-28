@@ -3,9 +3,6 @@
 # Specify the base commands
 base_command="nargo prove --package "
 
-# Generate a sequence of packages for all primitives
-packages=("keccak256_32B" "keccak256_32B_100_times" "ecdsa_secp256k1" "compute_merkle_root_depth_4" "compute_merkle_root_depth_32" "verify_proof" "storage_proof_depth_8")
-
 # Specify the output CSV file
 output_csv="results/prove_primitives.csv"
 
@@ -18,7 +15,7 @@ print_separator() {
 }
 
 # Iterate through each set of packages
-for pkg in "${packages[@]}"; do
+for pkg in $PACKAGES; do
     # Construct the full commands
     full_command="$base_command$pkg"
 
