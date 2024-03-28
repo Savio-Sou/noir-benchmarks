@@ -1,9 +1,0 @@
-[package]
-name = "rsa"
-type = "bin"
-authors = [""]
-compiler_version = ">=0.21.0"
-
-[dependencies]
-biguint = { tag = "main", git = "https://github.com/SetProtocol/noir-rsa", directory = "crates/rsa-biguint" }
-rsa = { tag = "main", git = "https://github.com/SetProtocol/noir-rsa", directory = "crates/rsa" }

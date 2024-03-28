@@ -29,6 +29,5 @@ members = [
     "primitives/compute_merkle_root_depth_4",
     "primitives/compute_merkle_root_depth_32",
     "primitives/verify_proof",
-    "primitives/storage_proof_depth_8",
-    "primitives/rsa",
+    "primitives/storage_proof_depth_8"
 ]
