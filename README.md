@@ -19,6 +19,22 @@ Existing results were gathered using:
 | verify_proof                 |              257,427 |            0.219 |            0.291 |          5.262 |                    5.553 |
 | storage_proof_depth_8        |            1,686,784 |            0.578 |            1.501 |         34.708 |                   36.209 |
 
+## v0.21.0 Results
+
+Results gathered with:
+- M2 Macbook Air
+- Nargo v0.21.0 paired with the default [barretenberg](https://github.com/AztecProtocol/aztec-packages/tree/master/barretenberg) proving backend
+
+| Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) | Execute + Prove Time (s) |
+|------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|:------------------------:|
+| keccak256                    |               55,000 |            0.308 |            0.381 |          2.238 |                    2.823 |
+| keccak256_100_times          |            1,800,000 |              0.3 |            0.384 |         78.813 |                   84.236 |
+| ecdsa_secp256k1              |               35,000 |            0.299 |            0.371 |           2.43 |                    3.081 |
+| compute_merkle_root_depth_4  |               29,000 |            0.296 |            0.376 |           1.12 |                    1.656 |
+| compute_merkle_root_depth_32 |               30,000 |              0.3 |            0.389 |          1.164 |                    1.695 |
+| verify_proof                 |              250,000 |            0.298 |            0.381 |         10.756 |                   11.811 |
+| storage_proof_depth_8        |            1,700,000 |            1.873 |            1.133 |         78.635 |                    84.61 |
+| [rsa](https://github.com/Savio-Sou/noir-benchmarks/tree/9b71b34cea654102abcd35f3540d0dfb17892baf/primitives/rsa)                          |            3,000,000 |           29.061 |           109.31 |        177.779 |                  287.202 |
 
 ![Results on M2 Macbook Air](M2_Air_Nargo_v0.21.0.png)
 
