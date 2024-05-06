@@ -1,9 +1,9 @@
 # Noir Benchmarks
 Benchmark `nargo prove` times of Noir programs spanning across different constraint counts (i.e. program sizes).
 
-## Results
+## v0.26.0 Results
 
-Existing results were gathered using:
+Results gathered with:
 - M1 Max Macbook Pro
 - Nargo v0.26.0 paired with the default [barretenberg](https://github.com/AztecProtocol/aztec-packages/tree/master/barretenberg) proving backend
 
