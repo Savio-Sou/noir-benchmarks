@@ -1,9 +1,27 @@
 # Noir Benchmarks
 Benchmark `nargo prove` times of Noir programs spanning across different constraint counts (i.e. program sizes).
 
-## Results
+## v0.26.0 Results
 
-Existing results were gathered using:
+Results gathered with:
+- M1 Max Macbook Pro
+- Nargo v0.26.0 paired with the default [barretenberg](https://github.com/AztecProtocol/aztec-packages/tree/master/barretenberg) proving backend
+
+| Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) | Execute + Prove Time (s) |
+|------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|:------------------------:|
+| keccak256_32B                |               54,830 |            0.248 |            0.283 |          1.586 |                    1.869 |
+| keccak256_32B_100_times      |            1,829,949 |            0.227 |            0.286 |         36.157 |                   36.443 |
+| keccak256_532B               |               97,766 |            0.228 |            0.282 |          2.771 |                    3.053 |
+| keccak256_532B_10_times      |              761,974 |            0.256 |            0.354 |         17.475 |                   17.829 |
+| ecdsa_secp256k1              |               36,355 |            0.219 |            0.281 |          1.623 |                    1.904 |
+| compute_merkle_root_depth_4  |               28,858 |            0.217 |            0.280 |          1.044 |                    1.324 |
+| compute_merkle_root_depth_32 |               30,482 |            0.229 |            0.299 |          1.081 |                    1.380 |
+| verify_proof                 |              257,427 |            0.219 |            0.291 |          5.262 |                    5.553 |
+| storage_proof_depth_8        |            1,686,784 |            0.578 |            1.501 |         34.708 |                   36.209 |
+
+## v0.21.0 Results
+
+Results gathered with:
 - M2 Macbook Air
 - Nargo v0.21.0 paired with the default [barretenberg](https://github.com/AztecProtocol/aztec-packages/tree/master/barretenberg) proving backend
 
@@ -16,7 +34,7 @@ Existing results were gathered using:
 | compute_merkle_root_depth_32 |               30,000 |              0.3 |            0.389 |          1.164 |                    1.695 |
 | verify_proof                 |              250,000 |            0.298 |            0.381 |         10.756 |                   11.811 |
 | storage_proof_depth_8        |            1,700,000 |            1.873 |            1.133 |         78.635 |                    84.61 |
-| rsa                          |            3,000,000 |           29.061 |           109.31 |        177.779 |                  287.202 |
+| [rsa](https://github.com/Savio-Sou/noir-benchmarks/tree/9b71b34cea654102abcd35f3540d0dfb17892baf/primitives/rsa)                          |            3,000,000 |           29.061 |           109.31 |        177.779 |                  287.202 |
 
 ![Results on M2 Macbook Air](M2_Air_Nargo_v0.21.0.png)
 

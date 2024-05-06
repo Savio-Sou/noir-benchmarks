@@ -3,9 +3,6 @@
 # Specify the base commands
 base_command="nargo execute --package "
 
-# Generate a sequence of arguments for all primitives
-arguments=("keccak256" "keccak256_100_times" "ecdsa_secp256k1" "compute_merkle_root_depth_4" "compute_merkle_root_depth_32" "verify_proof" "storage_proof_depth_8" "rsa")
-
 # Specify the output CSV file
 output_csv="results/execute_primitives.csv"
 
@@ -17,10 +14,10 @@ print_separator() {
     echo "----------------------------------------------------"
 }
 
-# Iterate through each set of arguments
-for args in "${arguments[@]}"; do
+# Iterate through each set of packages
+for pkg in $PACKAGES; do
     # Construct the full commands
-    command="nargo execute witness_$args --package $args"
+    command="nargo execute witness_$pkg --package $pkg"
 
     # Print the execute command before timing
     echo "Running: $command"
@@ -32,7 +29,7 @@ for args in "${arguments[@]}"; do
     real_time=$(echo "$time_output" | awk '/real/ {print $NF}')
 
     # Log the results to the CSV file
-    echo "$args,$real_time" >> "$output_csv"
+    echo "$pkg,$real_time" >> "$output_csv"
 
     # Print a separator line after each command
     print_separator

@@ -1,0 +1,7 @@
+[package]
+name = "keccak256_532B"
+type = "bin"
+authors = [""]
+compiler_version = ">=0.26.0"
+
+[dependencies]

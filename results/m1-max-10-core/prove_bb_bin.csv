@@ -1,0 +1,10 @@
+Backend Circuit Size,`backend_binary prove` Time (s)
+2^2,0m0.085s
+2^3,0m0.196s
+2^4,0m0.192s
+2^5,0m0.195s
+2^6,0m0.196s
+2^7,0m0.198s
+2^8,0m0.262s
+2^9,0m0.282s
+2^10,0m0.287s

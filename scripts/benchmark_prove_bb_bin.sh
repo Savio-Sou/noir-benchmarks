@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Generate a sequence of arguments from 2 to 24
-arguments=($(seq 2 24))
+# Generate a sequence of packages from 2 to 24
+packages=($(seq 2 24))
 
 # Specify the output CSV file
 output_csv="results/prove_bb_bin.csv"
@@ -14,11 +14,11 @@ print_separator() {
     echo "----------------------------------------------------"
 }
 
-# Iterate through each set of arguments
-for args in "${arguments[@]}"; do
+# Iterate through each set of packages
+for pkg in "${packages[@]}"; do
     # Construct commands
-    encode_command="jq -r '.bytecode' ./target/2^$args.json | base64 -d > ./target/2^$args.gz"
-    prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/2^$args.gz -w ./target/witness_2^$args.gz -o ./proofs/2^${args}_bb_bin.proof"
+    encode_command="jq -r '.bytecode' ./target/2^$pkg.json | base64 -d > ./target/2^$pkg.gz"
+    prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/2^$pkg.gz -w ./target/witness_2^$pkg.gz -o ./proofs/2^${pkg}_bb_bin.proof"
 
     # Preprocess files
     echo "Running: $encode_command"
@@ -34,7 +34,7 @@ for args in "${arguments[@]}"; do
     real_time=$(echo "$time_output" | awk '/real/ {print $NF}')
 
     # Log the results to the CSV file
-    echo "2^$args,$real_time" >> "$output_csv"
+    echo "2^$pkg,$real_time" >> "$output_csv"
 
     # Print a separator line after each command
     print_separator

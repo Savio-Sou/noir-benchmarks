@@ -23,12 +23,13 @@ members = [
     "circuit_sizes/2^22",
     "circuit_sizes/2^23",
     "circuit_sizes/2^24",
-    "primitives/keccak256",
-    "primitives/keccak256_100_times",
+    "primitives/keccak256_32B",
+    "primitives/keccak256_532B",
+    "primitives/keccak256_32B_100_times",
+    "primitives/keccak256_532B_10_times",
     "primitives/ecdsa_secp256k1",
     "primitives/compute_merkle_root_depth_4",
     "primitives/compute_merkle_root_depth_32",
     "primitives/verify_proof",
-    "primitives/storage_proof_depth_8",
-    "primitives/rsa",
+    "primitives/storage_proof_depth_8"
 ]
