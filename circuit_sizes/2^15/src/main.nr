@@ -1,4 +1,4 @@
-global N = 8192;
+global N: u32 = 8192;
 
 fn main(x: Field) {
     for i in 0 .. N {

@@ -8,7 +8,7 @@ use dep::std;
 +----------------+----------------------+--------------+----------------------+
 */
 
-global TRIE_NODE_LEN = 532;
+global TRIE_NODE_LEN: u32 = 532;
 
 fn main(trie_node: [u8; TRIE_NODE_LEN]) -> pub [u8; 32] {
     std::hash::keccak256(trie_node, TRIE_NODE_LEN)

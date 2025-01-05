@@ -1,14 +1,15 @@
 #!/bin/bash
 
+set -e
+
 # Specify the base commands
 info_base_command="nargo info --package 2^"
-prove_base_command="nargo prove --package 2^"
 
 # Generate a sequence of packages from 2 to 24
 packages=($(seq 2 24))
 
 # Specify the output file
-output_file="results/info_and_prove_results.txt"
+output_file="results/info_results.txt"
 
 # Clear the contents of the output file
 echo "" > "$output_file"
@@ -22,7 +23,6 @@ print_separator() {
 for pkg in "${packages[@]}"; do
     # Construct the full commands
     info_full_command="$info_base_command$pkg"
-    prove_full_command="$prove_base_command$pkg"
 
     # Print the info command before timing
     echo "Running: $info_full_command" >> "$output_file"
@@ -31,14 +31,8 @@ for pkg in "${packages[@]}"; do
     info_output=$(eval "$info_full_command")
     echo "$info_output" >> "$output_file"
 
-    # Print the prove command before timing
-    echo "Running: $prove_full_command" >> "$output_file"
-    
-    # Run the prove command and capture the timing information
-    { time $prove_full_command; } 2>> "$output_file"
-
     # Print a separator line after each command
     print_separator
 done
 
-echo "Timing results have been saved to $output_file"
+echo "Info results have been saved to $output_file"

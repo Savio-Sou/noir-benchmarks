@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Specify the base commands
 base_command="nargo compile --package "
 

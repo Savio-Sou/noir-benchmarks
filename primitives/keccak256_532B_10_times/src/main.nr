@@ -9,7 +9,7 @@ use dep::std;
 */
 
 global TRIE_NODE_LEN: u32 = 532;
-global TIMES = 10;
+global TIMES: u32 = 10;
 
 fn main(trie_nodes: [[u8; TRIE_NODE_LEN]; TIMES]) -> pub [u8; 32] {
     let mut to_hash = [0; 32];

@@ -1,7 +1,61 @@
 # Noir Benchmarks
-Benchmark `nargo prove` times of Noir programs spanning across different constraint counts (i.e. program sizes).
 
-## v0.26.0 Results
+Benchmarks for `nargo compile`, `nargo execute`, and `bb prove_ultra_honk` over
+Noir programs spanning across different constraint counts (i.e. program sizes).
+
+Results gathered with:
+
+- Nargo v1.0.0-beta.0
+- Lenovo Thinkpad P16 Gen 2 with [13th Gen Intel(R) Core(TM)
+  i7-13700HX](https://www.intel.com/content/www/us/en/products/sku/232166/intel-core-i713700hx-processor-30m-cache-up-to-5-00-ghz/specifications.html)
+
+# v1.0.0-beta.0 Results
+
+| Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) | Execute + Prove Time (s) |
+|------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|:------------------------:|
+| keccak256_32B                |                      |                  |                  |                |                          |
+| keccak256_32B_100_times      |                      |                  |                  |                |                          |
+| keccak256_532B               |                      |                  |                  |                |                          |
+| keccak256_532B_10_times      |                      |                  |                  |                |                          |
+| ecdsa_secp256k1              |                      |                  |                  |                |                          |
+| compute_merkle_root_depth_4  |                      |                  |                  |                |                          |
+| compute_merkle_root_depth_32 |                      |                  |                  |                |                          |
+| verify_proof                 |                      |                  |                  |                |                          |
+| storage_proof_depth_8        |                      |                  |                  |                |                          |
+
+`verify_proof` and `storage_proof_depth_8` were omitted as I ran into issues with v1.0.0-beta.0.
+
+| Backend Circuit Size | Compile Time (s) | Execute Time (s) |        Prove Time (s)       | Execute + Prove Time (s) |
+|:--------------------:|:----------------:|:----------------:|:---------------------------:|:------------------------:|
+| 2^2                  |                  |                  |                             |                          |
+| 2^3                  |                  |                  |                             |                          |
+| 2^4                  |                  |                  |                             |                          |
+| 2^5                  |                  |                  |                             |                          |
+| 2^6                  |                  |                  |                             |                          |
+| 2^7                  |                  |                  |                             |                          |
+| 2^8                  |                  |                  |                             |                          |
+| 2^9                  |                  |                  |                             |                          |
+| 2^10                 |                  |                  |                             |                          |
+| 2^11                 |                  |                  |                             |                          |
+| 2^12                 |                  |                  |                             |                          |
+| 2^13                 |                  |                  |                             |                          |
+| 2^14                 |                  |                  |                             |                          |
+| 2^15                 |                  |                  |                             |                          |
+| 2^16                 |                  |                  |                             |                          |
+| 2^17                 |                  |                  |                             |                          |
+| 2^18                 |                  |                  |                             |                          |
+| 2^19                 |                  |                  |                             |                          |
+| 2^20                 |                  |                  |                             |                          |
+| 2^21                 |                  |                  |                             |                          |
+| 2^22                 |                  |                  |                             |                          |
+| 2^23                 |                  |                  |                             |                          |
+| 2^24                 |                  |                  |                             |                          |
+
+## Old results
+
+A previous version of these benchmarks used older version of Nargo and the Barretenberg backend.
+
+### v0.26.0 Results
 
 Results gathered with:
 - M1 Max Macbook Pro
@@ -19,7 +73,7 @@ Results gathered with:
 | verify_proof                 |              257,427 |            0.219 |            0.291 |          5.262 |                    5.553 |
 | storage_proof_depth_8        |            1,686,784 |            0.578 |            1.501 |         34.708 |                   36.209 |
 
-## v0.21.0 Results
+### v0.21.0 Results
 
 Results gathered with:
 - M2 Macbook Air
@@ -72,7 +126,12 @@ The "Execute + Prove Time"s above were gathered through running `nargo prove`, w
 
 ## Run it yourself
 
-To gather your own results, [install Nargo](https://noir-lang.org/getting_started/nargo_installation) and run from the project root:
+To gather your own results:
+
+1. [Install Nargo](https://noir-lang.org/getting_started/nargo_installation).
+2. [Install  Barretenberg](https://github.com/AztecProtocol/barretenberg).
+
+Next, run from the project root:
 
 ```
 bash scripts/benchmark_all.sh
@@ -82,7 +141,7 @@ You can then find the results being printed into the CSV file under the [`result
 
 **Note:** The first run includes program compilations. Conduct a second run to obtain accurate benchmarks of `nargo prove` times.
 
-### Contribute
+## Contribute
 
 If you would like to share results from your local runs, submit a Pull Request specifying:
 
@@ -92,23 +151,44 @@ If you would like to share results from your local runs, submit a Pull Request s
 
 ## 2^n constraint counts
 
-Ultraplonk-based barretenberg comes with stepped proving time and memory footprints per powers of 2 constraint counts. That is two Noir programs of 150,000 and 250,000 backend constraint counts respectively would cost similar time and memory to prove, as they both consists of >2^17 and ≤2^18 constraints.
+Ultraplonk-based barretenberg comes with stepped proving time and memory footprints per powers of 2 constraint counts. That is two Noir programs of 150,000 and 250,000 backend constraint counts respectively would cost similar time and memory to prove, as they both consist of >2^17 and ≤2^18 constraints.
 
-The repository contains Noir programs of backend constraint counts from 2^2 to 2^24 as of Nargo v0.19.4 and its paired version of barretenberg.
+The repository contains Noir programs of backend constraint counts from 2^2 to 2^24.
 
-You can run the following command at the project root to verify actual contraint counts of each example program:
-
-```
-nargo info --package {package_name e.g. 2^2}
-```
-
-You should then see the corresponding details printed to your console:
+You can run the following command at the project root to verify actual constraint counts of each example program:
 
 ```
-$ nargo info --package 2^2
-+---------+------------------------+--------------+----------------------+
-| Package | Language               | ACIR Opcodes | Backend Circuit Size |
-+---------+------------------------+--------------+----------------------+
-| 2^2     | PLONKCSat { width: 3 } | 0            | 5                    |
-+---------+------------------------+--------------+----------------------+
+./scripts/info.sh
+```
+
+You should then see the corresponding details saved to `results/info_results.txt`:
+
+```
+Running: nargo info --package 2^2
++---------+----------+----------------------+--------------+-----------------+
+| Package | Function | Expression Width     | ACIR Opcodes | Brillig Opcodes |
++---------+----------+----------------------+--------------+-----------------+
+| 2^2     | main     | Bounded { width: 4 } | 0            | 0               |
++---------+----------+----------------------+--------------+-----------------+
+----------------------------------------------------
+Running: nargo info --package 2^3
++---------+------------------+----------------------+--------------+-----------------+
+| Package | Function         | Expression Width     | ACIR Opcodes | Brillig Opcodes |
++---------+------------------+----------------------+--------------+-----------------+
+| 2^3     | main             | Bounded { width: 4 } | 4            | 9               |
++---------+------------------+----------------------+--------------+-----------------+
+| 2^3     | directive_invert | N/A                  | N/A          | 9               |
++---------+------------------+----------------------+--------------+-----------------+
+----------------------------------------------------
+Running: nargo info --package 2^4
++---------+------------------+----------------------+--------------+-----------------+
+| Package | Function         | Expression Width     | ACIR Opcodes | Brillig Opcodes |
++---------+------------------+----------------------+--------------+-----------------+
+| 2^4     | main             | Bounded { width: 4 } | 18           | 9               |
++---------+------------------+----------------------+--------------+-----------------+
+| 2^4     | directive_invert | N/A                  | N/A          | 9               |
++---------+------------------+----------------------+--------------+-----------------+
+----------------------------------------------------
+
+... (continued)
 ```
