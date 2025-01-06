@@ -5,11 +5,15 @@ Noir programs spanning across different constraint counts (i.e. program sizes).
 
 Results gathered with:
 
-- Nargo v1.0.0-beta.0
+- Nargo 1.0.0-beta.0
+- Barretenberg 0.63.0
 - Lenovo Thinkpad P16 Gen 2 with [13th Gen Intel(R) Core(TM)
   i7-13700HX](https://www.intel.com/content/www/us/en/products/sku/232166/intel-core-i713700hx-processor-30m-cache-up-to-5-00-ghz/specifications.html)
+- Ubuntu Linux 23.04
 
-# v1.0.0-beta.0 Results
+# Nargo v1.0.0-beta.0 and bb 0.63.0 Results
+
+![Results on Thinkpad P16 Gen 2](Thinkpad_P16_Gen2_v1.0.0-beta.0.png)
 
 | Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) |
 |------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|
