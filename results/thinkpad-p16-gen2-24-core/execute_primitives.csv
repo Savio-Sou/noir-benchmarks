@@ -1,0 +1,8 @@
+Primitive,`nargo execute` Time (s)
+keccak256_32B,0m0.150s
+keccak256_32B_100_times,0m0.278s
+keccak256_532B,0m0.168s
+keccak256_532B_10_times,0m0.350s
+ecdsa_secp256k1,0m0.154s
+compute_merkle_root_depth_4,0m0.148s
+compute_merkle_root_depth_32,0m0.166s

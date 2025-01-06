@@ -32,7 +32,6 @@ for pkg in "${packages[@]}"; do
     echo "Running: $prove_command"
 
     # Run the execute command and capture the timing information along with any error message
-    echo $prove_command
     { time_output=$({ time $prove_command; } 2>&1); }
 
     # Extract real time from time_output using awk

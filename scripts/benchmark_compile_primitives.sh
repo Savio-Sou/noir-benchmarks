@@ -2,6 +2,8 @@
 
 set -e
 
+mkdir -p results
+
 # Specify the base commands
 base_command="nargo compile --package "
 

@@ -11,45 +11,61 @@ Results gathered with:
 
 # v1.0.0-beta.0 Results
 
-| Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) | Execute + Prove Time (s) |
-|------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|:------------------------:|
-| keccak256_32B                |                      |                  |                  |                |                          |
-| keccak256_32B_100_times      |                      |                  |                  |                |                          |
-| keccak256_532B               |                      |                  |                  |                |                          |
-| keccak256_532B_10_times      |                      |                  |                  |                |                          |
-| ecdsa_secp256k1              |                      |                  |                  |                |                          |
-| compute_merkle_root_depth_4  |                      |                  |                  |                |                          |
-| compute_merkle_root_depth_32 |                      |                  |                  |                |                          |
-| verify_proof                 |                      |                  |                  |                |                          |
-| storage_proof_depth_8        |                      |                  |                  |                |                          |
+| Primitive                    | Backend Circuit Size | Compile Time (s) | Execute Time (s) | Prove Time (s) |
+|------------------------------|:--------------------:|:----------------:|:----------------:|:--------------:|
+| keccak256_32B                |                20240 |            0.160 |            0.150 |          0.911 |
+| keccak256_32B_100_times      |              1733534 |            0.791 |            0.278 |         18.299 |
+| keccak256_532B               |                76817 |            0.252 |            0.168 |          1.429 |
+| keccak256_532B_10_times      |               747646 |            0.955 |            0.350 |          8.316 |
+| ecdsa_secp256k1              |                39324 |            0.162 |            0.154 |          0.893 |
+| compute_merkle_root_depth_4  |                 3223 |            0.154 |            0.148 |          0.620 |
+| compute_merkle_root_depth_32 |                 7517 |            0.159 |            0.166 |          0.720 |
 
-`verify_proof` and `storage_proof_depth_8` were omitted as I ran into issues with v1.0.0-beta.0.
+`verify_proof` and `storage_proof_depth_8` were omitted as I ran into issues with v1.0.0-beta.0. Specifically.
+storage_proof_depth_8 depends on
+[aragonzkresearch/noir-trie-proofs](https://github.com/aragonzkresearch/noir-trie-proofs),
+which, at the time of writing, has not yet been updates for nargo
+v1.0.0-beta.0. Furthermore running `bb` to generate the recurvsive proof
+(`verify_proof`) emitted the following error:
 
-| Backend Circuit Size | Compile Time (s) | Execute Time (s) |        Prove Time (s)       | Execute + Prove Time (s) |
-|:--------------------:|:----------------:|:----------------:|:---------------------------:|:------------------------:|
-| 2^2                  |                  |                  |                             |                          |
-| 2^3                  |                  |                  |                             |                          |
-| 2^4                  |                  |                  |                             |                          |
-| 2^5                  |                  |                  |                             |                          |
-| 2^6                  |                  |                  |                             |                          |
-| 2^7                  |                  |                  |                             |                          |
-| 2^8                  |                  |                  |                             |                          |
-| 2^9                  |                  |                  |                             |                          |
-| 2^10                 |                  |                  |                             |                          |
-| 2^11                 |                  |                  |                             |                          |
-| 2^12                 |                  |                  |                             |                          |
-| 2^13                 |                  |                  |                             |                          |
-| 2^14                 |                  |                  |                             |                          |
-| 2^15                 |                  |                  |                             |                          |
-| 2^16                 |                  |                  |                             |                          |
-| 2^17                 |                  |                  |                             |                          |
-| 2^18                 |                  |                  |                             |                          |
-| 2^19                 |                  |                  |                             |                          |
-| 2^20                 |                  |                  |                             |                          |
-| 2^21                 |                  |                  |                             |                          |
-| 2^22                 |                  |                  |                             |                          |
-| 2^23                 |                  |                  |                             |                          |
-| 2^24                 |                  |                  |                             |                          |
+```
+bb: /home/runner/work/aztec-packages/aztec-packages/barretenberg/cpp/src/barretenberg/ecc/curves/bn254/../../fields/./field_declarations.hpp:128: bool bb::field<bb::Bn254FrParams>::operator bool() const [Params = bb::Bn254FrParams]: Assertion `(out.data[0] == 0 || out.data[0] == 1)' failed.
+Aborted (core dumped)
+```
+
+| Backend Circuit Size | Compile Time (s) | Execute Time (s) |        Prove Time (s)       |
+|:--------------------:|:----------------:|:----------------:|:---------------------------:|
+| 2^2                  |            0.162 |            0.148 |                     0.143   |
+| 2^3                  |            0.146 |            0.146 |                     0.143   |
+| 2^4                  |            0.149 |            0.151 |                     0.145   |
+| 2^5                  |            0.146 |            0.146 |                     0.147   |
+| 2^6                  |            0.154 |            0.146 |                     0.148   |
+| 2^7                  |            0.156 |            0.150 |                     0.154   |
+| 2^8                  |            0.143 |            0.154 |                     0.160   |
+| 2^9                  |            0.144 |            0.161 |                     0.166   |
+| 2^10                 |            0.156 |            0.157 |                     0.179   |
+| 2^11                 |            0.165 |            0.181 |                     0.205   |
+| 2^12                 |            0.172 |            0.203 |                     0.248   |
+| 2^13                 |            0.207 |            0.269 |                     0.364   |
+| 2^14                 |            0.269 |            0.415 |                     0.541   |
+| 2^15                 |            0.421 |            0.693 |                     0.812   |
+| 2^16                 |            0.714 |            1.252 |                     1.444   |
+| 2^17                 |            1.251 |            2.355 |                     2.690   |
+| 2^18                 |            2.562 |            4.797 |                     5.114   |
+| 2^19                 |            5.122 |            9.672 |                     10.080  |
+| 2^20                 |           10.416 |           19.475 |                     19.853  |
+| 2^21                 |           20.047 |           37.673 |                     302.956 |
+| 2^22                 |           42.178 |           77.534 |                     671.056 |
+| 2^23                 |            332.5 |          153.608 |                           * |
+| 2^24                 |          777.882 |          309.938 |                           * |
+
+Note that for the entries marked with \*, the `bb` program emitted the
+following error, indicating that the device likely ran out of memory:
+
+```
+libc++abi: terminating due to uncaught exception of type std::bad_alloc: std::bad_alloc
+Aborted (core dumped)
+```
 
 ## Old results
 

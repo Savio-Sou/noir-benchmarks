@@ -2,6 +2,8 @@
 
 set -e
 
+mkdir -p results
+
 # Generate a sequence of packages from 2 to 24
 packages=($(seq 2 24))
 
