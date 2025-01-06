@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Generate a sequence of packages from 2 to 24
 packages=($(seq 2 24))
 
@@ -14,11 +16,13 @@ print_separator() {
     echo "----------------------------------------------------"
 }
 
+mkdir -p proofs
+
 # Iterate through each set of packages
 for pkg in "${packages[@]}"; do
     # Construct commands
     encode_command="jq -r '.bytecode' ./target/2^$pkg.json | base64 -d > ./target/2^$pkg.gz"
-    prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/2^$pkg.gz -w ./target/witness_2^$pkg.gz -o ./proofs/2^${pkg}_bb_bin.proof"
+    prove_command="bb prove_ultra_honk -b ./target/2^$pkg.gz -w ./target/witness_2^$pkg.gz -o ./proofs/2^${pkg}_bb_bin.proof"
 
     # Preprocess files
     echo "Running: $encode_command"

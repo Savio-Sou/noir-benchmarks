@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Specify the output CSV file
 output_csv="results/prove_bb_bin_primitives.csv"
 
@@ -15,7 +17,7 @@ print_separator() {
 for pkg in $PACKAGES; do
     # Construct commands
     encode_command="jq -r '.bytecode' ./target/$pkg.json | base64 -d > ./target/$pkg.gz"
-    prove_command="$HOME/.nargo/backends/acvm-backend-barretenberg/backend_binary prove -b ./target/$pkg.gz -w ./target/witness_$pkg.gz -o ./proofs/${pkg}_bb_bin.proof"
+    prove_command="bb prove_ultra_honk -b ./target/$pkg.gz -w ./target/witness_$pkg.gz -o ./proofs/${pkg}_bb_bin.proof"
 
     # Preprocess files
     echo "Running: $encode_command"
